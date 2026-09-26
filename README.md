@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A simple app to view, search, and manage Pokemon. Built with .NET for fast and reliable performance.
+A simple app to view, search, and manage Pokemon. Built with .NET and Angular.
 
 ## Requirements / Tech-stack
 
