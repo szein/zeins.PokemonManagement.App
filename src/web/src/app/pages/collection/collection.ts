@@ -8,6 +8,7 @@ import { CollectionService } from '../../services/collection-service';
 import { CollectionModel } from '../../models/collection';
 import { Pokemon } from '../../models/pokemon';
 import { CollectionStateService } from '../../state/collection-state.service';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [MatToolbarModule, MatButtonModule, MatPaginatorModule, PokemonItem],
@@ -20,6 +21,7 @@ export class Collection implements OnInit {
   private collectionStateService = inject(CollectionStateService);
   private collectionService = inject(CollectionService)
   private snackBar = inject(MatSnackBar)
+  private router = inject(Router)
   private cdr = inject(ChangeDetectorRef)
   collections: CollectionModel[] = [];
   private allPokemons: Pokemon[] = [];
@@ -35,6 +37,10 @@ export class Collection implements OnInit {
     this.loadCollectionPokemons();  
   }
 
+  goToStore(): void {
+  this.router.navigate(['/store']);
+}
+
   loadCollectionPokemons() : void {
     this.collectionService
       .getCollectionPokemons().subscribe({
@@ -45,11 +51,12 @@ export class Collection implements OnInit {
             this.allPokemons = collection.pokemons;
             this.totalItems = this.allPokemons.length;
             this.collectionStateService.setCollection(collection.id)
+            this.collectionStateService.setCollectionCount(this.totalItems)
           } else {
             this.allPokemons = [];
             this.totalItems = 0;
           }
-          this.updateVisiblePokemons();
+          this.updatePokemonsPagnation();
           this.cdr.markForCheck();
         },
         error: (err) => {
@@ -73,10 +80,10 @@ export class Collection implements OnInit {
   onPageChange(event: PageEvent): void {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
-    this.updateVisiblePokemons();
+    this.updatePokemonsPagnation();
   }
 
-  private updateVisiblePokemons(): void {
+  private updatePokemonsPagnation(): void {
     const pageCount = Math.ceil(this.allPokemons.length / this.pageSize);
     this.pageIndex = Math.min(this.pageIndex, Math.max(pageCount - 1, 0));
     const start = this.pageIndex * this.pageSize;

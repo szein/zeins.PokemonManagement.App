@@ -5,6 +5,9 @@
 
       @if(pokemons.length === 0){
         <p>You do not have any Pokemon yet!</p>
+        <button mat-raised-button (click)="goToStore()">
+          Go to Store
+        </button>
       }@else{
         
         @for(pokemon of pokemons; track pokemon) {

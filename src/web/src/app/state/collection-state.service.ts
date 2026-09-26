@@ -19,4 +19,18 @@ export class CollectionStateService {
   get collectionId() {
     return this.collectionIdSubject.value;
   }
+
+  private collectionCountSubject =
+    new BehaviorSubject<number | null>(null);
+
+  collectionCount$ =
+    this.collectionCountSubject.asObservable();
+
+  setCollectionCount(count: number) {
+    this.collectionCountSubject.next(count);    
+  }
+
+  get collectionCount() {
+    return this.collectionCountSubject.value;
+  }
 }

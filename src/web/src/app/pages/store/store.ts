@@ -6,6 +6,7 @@ import { Pokemon } from '../../models/pokemon';
 import { PokemonItem } from '../../components/pokemon-item/pokemon-item';
 import { CollectionService } from '../../services/collection-service';
 import { CollectionStateService } from '../../state/collection-state.service';
+import { PokemonStateService } from '../../state/pokemon-state.service';
 
 @Component({
   imports: [MatPaginatorModule, PokemonItem],
@@ -18,6 +19,7 @@ export class Store implements OnInit {
   private pokemonService = inject(PokemonService)
   private collectionService = inject(CollectionService)
   private collectionStateService = inject(CollectionStateService)
+  private pokemonStateService = inject(PokemonStateService)
   private snackBar = inject(MatSnackBar)
   private cdr = inject(ChangeDetectorRef)
   pokemons: Pokemon[] = [];
@@ -39,14 +41,14 @@ export class Store implements OnInit {
       this.pageSize
     ).subscribe({
       next: (response) => {
-        console.log(response);
         this.pokemons = response.items;
         this.totalItems = response.totalItems;
+        this.pokemonStateService.setStoreCount(this.totalItems);
         this.cdr.markForCheck();
       },
       error: (err) => {
         this.snackBar.open('Error! Could not fetch collection.', 'Close', { duration: 3000 })
-        console.log(err);
+        console.error(err);
         
       }
     });
