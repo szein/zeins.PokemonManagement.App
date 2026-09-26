@@ -64,6 +64,12 @@ ng serve
 - API: `http://localhost:5054/api/health`
 - Web UI: `http://localhost:4200/`
 
+#### Benutern:
+  - `user1@zeins.men`
+  - `user2@zeins.men`
+
+  Passwort: `PokePass123$`
+
 ## Configuration
 
 If you wish to change database name update `appsettings.json`:
