@@ -19,37 +19,59 @@ git clone https://github.com/szein/zeins.PokemonManagement.App.git
 cd zeins.PokemonManagement.App
 ```
 
-### 2. Set up the database
+### 2. Set up and run the Api the database
+Navigate to api folder and create the database (database can also auto created when running the api (in step 3))
 ```bash
+cd src/api
 dotnet ef database update
 ```
 
 ### 3. Run the App
 
 #### Run the API
+Run the following command in the Terminal (**make sure you are in the src/api directory**)
+```bash
+cd src/api
+```
+
 ```bash
 dotnet run
 ```
-The app will start at `https://localhost:5054`
+The app will start at `http://localhost:5054`
+
+Test the api by calling:
+```bash
+curl http://localhost:5054/health
+```
 
 #### Run the Web
+
+1- In another terminal navigate to web folder (if you still in repo root directory)
+
+```bash
+cd src/web
+```
+2- Install packages
+```bash
+npm install
+```
+3- When install is done run the web app
 ```bash
 ng serve
 ```
 
 ### 4. Access the app
-- API: `https://localhost:5054/api/health`
-- Web UI: `https://localhost:4200/` (if Blazor is used)
+- API: `http://localhost:5054/api/health`
+- Web UI: `http://localhost:4200/`
 
 ## Configuration
 
-Update `appsettings.json`:
+If you wish to change database name update `appsettings.json`:
 ```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "your-database-connection-string"
-  }
-}
+"DefaultConnectionName": "SqliteConnection",
+  "ConnectionStrings":{
+    "SqliteConnection": "Data Source=PokemonManagement.db"
+  },
 ```
 
 ## Features
