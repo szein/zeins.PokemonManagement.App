@@ -15,8 +15,8 @@ A simple app to view, search, and manage Pokemon. Built with .NET for fast and r
 
 ### 1. Clone the repository and navigate to folder
 ```bash
-git clone <your-repo-url>
-cd pokemon-app
+git clone https://github.com/szein/zeins.PokemonManagement.App.git
+cd zeins.PokemonManagement.App
 ```
 
 ### 2. Set up the database
