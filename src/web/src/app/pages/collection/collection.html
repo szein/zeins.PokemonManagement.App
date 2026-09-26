@@ -1,0 +1,26 @@
+ <mat-toolbar>
+  <span> My Default Collection</span>
+ </mat-toolbar>
+    <div class="card-container">
+
+      @if(pokemons.length === 0){
+        <p>You do not have any Pokemon yet!</p>
+      }@else{
+        
+        @for(pokemon of pokemons; track pokemon) {
+          <app-pokemon-item 
+        [pokemonItem]="pokemon"
+        [actionButtonText]="actionButtonText"
+        [owned]="true"
+        (actionClicked)="onActionButtonClick($event)" />
+      }
+    }
+    </div>
+
+<mat-paginator grid-row="1" #paginator
+            [length]="totalItems"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            (page)="onPageChange($event)"
+            aria-label="Select page">
+</mat-paginator>

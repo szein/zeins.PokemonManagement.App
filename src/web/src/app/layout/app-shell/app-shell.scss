@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  height: 100vh;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: white;
+  color: #0f172a;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-weight: 600;
+}
+
+.brand mat-icon {
+  color: #2563eb;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.navigation {
+  display: flex;
+  gap: 8px;
+}
+
+.active-link {
+  background: rgba(37, 99, 235, 0.1);
+  border-radius: 8px;
+}
+
+.content {
+  padding: 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+}

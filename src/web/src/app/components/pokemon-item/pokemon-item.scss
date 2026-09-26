@@ -1,0 +1,23 @@
+:host {
+display: block;
+}
+
+mat-card {
+height: 100%;
+}
+
+.card-actions {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.owned {
+background-color: #f44336 !important;
+color: white !important;
+}
+
+.not-owned {
+background-color: #4caf50 !important;
+color: white !important;
+}

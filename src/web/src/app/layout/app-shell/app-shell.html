@@ -1,0 +1,57 @@
+<mat-toolbar class="topbar">
+
+  <div class="brand">
+    <mat-icon>hub</mat-icon>
+    <span>Pokemon Collection Portal</span>
+  </div>
+
+  <span class="spacer"></span>
+
+  <nav class="navigation">
+
+    <a
+      mat-button
+      routerLink="/dashboard"
+      routerLinkActive="active-link">
+      Dashboard
+    </a>
+
+    <a
+      mat-button
+      routerLink="/collection"
+      routerLinkActive="active-link">
+      Collection
+    </a>
+
+    <a
+      mat-button
+      routerLink="/store"
+      routerLinkActive="active-link">
+      Store
+    </a>
+
+  </nav>
+
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="profileMenu">
+
+    <mat-icon>
+      account_circle
+    </mat-icon>
+
+  </button>
+
+  <mat-menu #profileMenu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      Logout
+    </button>
+  </mat-menu>
+
+</mat-toolbar>
+
+<main class="content">
+
+  <router-outlet></router-outlet>
+
+</main>
